@@ -1,0 +1,27 @@
+{
+  "name": "ugapp",
+  "version": "0.0.1",
+  "description": "Server App for DT version",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandrkopylov/UGApp.git"
+  },
+  "keywords": [
+    "UG",
+    "geo",
+    "gis"
+  ],
+  "author": "Alexandr Kopylov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexandrkopylov/UGApp/issues"
+  },
+  "homepage": "https://github.com/alexandrkopylov/UGApp#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
