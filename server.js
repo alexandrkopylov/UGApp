@@ -39,7 +39,6 @@ app.get('/logs',function(req,res){
 	res.send(JSON.stringify(db_log.find()));
 });
 
-});
 
 app.listen(80, function () {
     console.log('Port 80');
