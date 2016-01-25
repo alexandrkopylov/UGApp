@@ -37,7 +37,17 @@ app.get('/logs',function(req,res){
 	logdb('Get /logs');
 	db_log.find();
 	res.send('Get /logs');
-})
+});
+app.get("/test",function(req,res){
+    var data = [];
+    client.HGETALL("receipts",function(err,obj){
+        for(var id in obj){
+            data.push(JSON.parse(obj[id]));
+        }
+        console.log(data);
+        res.json(data);
+    });
+});
 
 app.listen(80, function () {
     console.log('Port 80');
