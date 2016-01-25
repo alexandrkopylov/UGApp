@@ -7,6 +7,8 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log('Connected to DB');
 });
+
+var db_log=mongoose.model('dblog',{log_date: Date, log_val:String});
 var LicT01 = mongoose.model('Lic', { name: String });
 var nlic = new LicT01({ name: '!QW134' });
 nlic.save(function (err) {
@@ -15,7 +17,8 @@ nlic.save(function (err) {
 })
 
 app.get('/', function (req, res) {
-    res.send('UGApp Server started<br>');
+    var val= new db_log({log_date=Date(),log_val='Get /'});
+	res.send('UGApp Server started<br>');
 });
 app.get('/lic', function (req, res) {
     res.send('UGApp Server lic port');
