@@ -35,7 +35,8 @@ app.post('/lic', function (req, res) {
 });
 app.get('/logs',function(req,res){
 	logdb('Get /logs');
-	res.json(db_log.find());
+	db_log.find();
+	res.send('Get /logs');
 })
 
 app.listen(80, function () {
