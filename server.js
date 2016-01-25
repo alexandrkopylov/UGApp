@@ -6,6 +6,6 @@ app.get('/', function (req, res) {
 });
 
 app.listen(80, function () {
-    console.log('Port 80');
+    console.log('Port 3000');
 });
 // JavaScript source code
