@@ -21,7 +21,7 @@ app.get('/lic', function (req, res) {
     res.send('UGApp Server lic port');
 });
 app.post('/lic', function (req, res) {
-    res.send(1);
+    res.send('POST data 1');
 });
 
 app.listen(80, function () {
