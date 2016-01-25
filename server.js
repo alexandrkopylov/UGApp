@@ -17,7 +17,8 @@ nlic.save(function (err) {
 })
 
 app.get('/', function (req, res) {
-    var val= new db_log({log_date=Date(),log_val='Get /'});
+    var val= new db_log({log_date:Date(),log_val:'Get /'});
+	val.save();
 	res.send('UGApp Server started<br>');
 });
 app.get('/lic', function (req, res) {
