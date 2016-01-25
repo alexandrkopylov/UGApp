@@ -18,7 +18,7 @@ nlic.save(function (err) {
 
 
 function logdb(strlog){
-	var val= new dblog({log_date:Date(),log_val:strlog});
+	var val= new db_log({log_date:Date(),log_val:strlog});
 	val.save();
 }
 app.get('/', function (req, res) {
