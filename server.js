@@ -33,6 +33,10 @@ app.post('/lic', function (req, res) {
    logdb('POST /lic');
 	res.send('1');
 });
+app.get('/logs',function(req,res){
+	logdb('Get /logs');
+	res.send(db_log.find());
+})
 
 app.listen(80, function () {
     console.log('Port 80');
