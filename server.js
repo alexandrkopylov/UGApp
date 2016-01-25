@@ -7,7 +7,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log('Connected to DB');
 });
-var LicT01 = mongoose.model('Lic', { name: Sring });
+var LicT01 = mongoose.model('Lic', { name: String });
 var nlic = new LicT01({ name: '!QW134' });
 nlic.save(function (err) {
     if (err)
