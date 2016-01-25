@@ -16,19 +16,21 @@ nlic.save(function (err) {
         console.log('ER0001');
 })
 
-app.get('/', function (req, res) {
-    var val= new db_log({log_date:Date(),log_val:'Get /'});
+
+function logdb(strlog){
+	var val= new dblog({log_date:Date(),log_val:strlog});
 	val.save();
+}
+app.get('/', function (req, res) {
+    logdb('Get /');
 	res.send('UGApp Server started<br>v.0.0.1');
 });
 app.get('/lic', function (req, res) {
-    var val=new db_log({log_date:Date(),log_val:'Get /lic'});
-	val.save();
+    logdb('Get /lic');
 	res.send('UGApp Server lic port');
 });
 app.post('/lic', function (req, res) {
-    var val=new db_log({log_date:Date(),log_val:'POST /lic'});
-	val.save();
+   logdb('POST /lic');
 	res.send('1');
 });
 
