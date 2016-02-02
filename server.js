@@ -8,6 +8,17 @@ db.once('open', function () {
     console.log('Connected to DB');
 });
 
+var Schema = mongoose.Schema;
+
+var Category = new Schema({
+    title: { type: String, required: true },
+    author: { type: String, required: true },
+    visible: { type: Boolean, default: true },
+    modified: { type: Date, default: Date.now }
+
+});
+
+var CategoryModel = mongoose.model('Category', Category);
 var db_log=mongoose.model('dblog',{log_date: Date, log_val:String});
 var LicT01 = mongoose.model('Lic', { name: String });
 var nlic = new LicT01({ name: '!QW134' });
@@ -39,6 +50,20 @@ app.get('/logs',function(req,res){
 	db_log.find();
 	res.send(JSON.stringify(db_log.find()));
 });
+
+app.get('/api/categories', function (req, res) {
+    return CategoryModel.find(function (err, articles) {
+        if (!err) {
+            return res.send(categories);
+        } else {
+            res.statusCode = 500;
+            logdb('Internal error (%d): %s', res.statusCode, err.message);
+            return res.send({error:'Server error'});
+        }
+        
+    });
+});
+
 
 
 app.listen(80, function () {
