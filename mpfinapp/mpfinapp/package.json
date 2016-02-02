@@ -1,0 +1,10 @@
+{
+  "name": "mpfinapp",
+  "version": "0.0.0",
+  "description": "mpfinapp",
+  "main": "server.js",
+  "author": {
+    "name": "Admin",
+    "email": ""
+  }
+}
