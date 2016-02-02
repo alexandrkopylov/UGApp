@@ -65,7 +65,7 @@ app.get('/api/categories', function (req, res) {
 });
 
 app.post('/api/categories', function(req,res){
-    console.log(rq.body)
+    console.log(req.body)
     var category = new CategoryModel({
         title: req.body.title,
         author: req.body.author,
