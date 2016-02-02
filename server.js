@@ -33,6 +33,8 @@ function logdb(strlog){
 	console.log(strlog);
 	val.save();
 }
+
+app.use(express.bodyParser());
 app.get('/', function (req, res) {
     logdb('Get /');
 	res.send('UGApp Server started<br>v.0.0.1');
@@ -65,7 +67,7 @@ app.get('/api/categories', function (req, res) {
 });
 
 app.post('/api/categories', function(req,res){
-    console.log(req.body)
+    console.log(req.body);
     var category = new CategoryModel({
         title: req.body.title,
         author: req.body.author,
