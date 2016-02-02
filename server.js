@@ -52,7 +52,7 @@ app.get('/logs',function(req,res){
 });
 
 app.get('/api/categories', function (req, res) {
-    return CategoryModel.find(function (err, articles) {
+    return CategoryModel.find(function (err, categories) {
         if (!err) {
             return res.send(categories);
         } else {
@@ -62,6 +62,32 @@ app.get('/api/categories', function (req, res) {
         }
         
     });
+});
+
+app.post('/api/categories', function(req,res){
+    var category = new CategoryModel({
+        title: req.body.title,
+        author: req.body.author,
+        visible: req.body.visible
+    });
+
+    category.save(function(err){
+    if (!err){
+        logdb("Added category");
+        return res.send({status:'OK', category:category});
+    } else {
+    logdb(err.message);
+        console.log(err);
+        if(err.name == 'ValidationError') {
+            res.statusCode = 400;
+            res.send({ error: 'Validation error' });
+        } else {
+            res.statusCode = 500;
+            res.send({ error: 'Server error' });
+        }
+        logdb('Internal error (%d): %s', res.statusCode, err.message);
+        }
+});
 });
 
 
