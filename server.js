@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
@@ -34,7 +35,7 @@ function logdb(strlog){
 	val.save();
 }
 
-app.use(express.bodyParser());
+app.use(bodyParser.json());
 app.get('/', function (req, res) {
     logdb('Get /');
 	res.send('UGApp Server started<br>v.0.0.1');
