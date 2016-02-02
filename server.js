@@ -36,6 +36,7 @@ function logdb(strlog){
 }
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/', function (req, res) {
     logdb('Get /');
 	res.send('UGApp Server started<br>v.0.0.1');
