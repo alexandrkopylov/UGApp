@@ -69,7 +69,7 @@ app.get('/api/categories', function (req, res) {
 });
 
 app.post('/api/categories', function(req,res){
-    console.log(req.body);
+    console.log('------------------');
     var category = new CategoryModel({
         title: req.body.title,
         author: req.body.author,
