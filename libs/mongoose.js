@@ -2,6 +2,7 @@
 var mongoose=require('mongoose');
 var log=require('./log')(module);
 var config=require('./config');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 mongoose.connect(config.get('mongoose:uri'));
 var db = mongoose.connection;
