@@ -54,7 +54,7 @@ router.get('/:id', function(req,res){
         return res.send({error:'Category not found'});
         }
     if (!err) {
-        return res.send({status:'OK', article:article});
+        return res.send({status:'OK', category:category});
     }else{
         res.statusCode=500;
         log.error('Internal error (%d): %s', res.statusCode, err.message);
