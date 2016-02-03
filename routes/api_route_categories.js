@@ -55,10 +55,11 @@ router.get('/:id', function(req,res){
         }
     if (!err) {
         return res.send({status:'OK', category:category});
+        log.debug(category);
     }else{
         res.statusCode=500;
         log.error('Internal error (%d): %s', res.statusCode, err.message);
-        log.debug(category);
+        
         return res.send({error:'Server error'});
     }
    });
