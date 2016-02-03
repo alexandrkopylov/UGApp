@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 var mongoose=require('mongoose');
 var log=require('./log')(module);
+var config=require('./config')(module);
 
-
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect(config.get('mongoose:uri'));
 var db = mongoose.connection;
 
 db.on('error',function(err){

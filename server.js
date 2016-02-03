@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var log=require('./libs/log')(module);
+var config=require('./libs/config')(module);
+
 var CategoryModel = require('./libs/mongoose').CategoryModel;
 
 
@@ -75,7 +77,7 @@ app.delete('/api/categories/:id', function(req,res){
 });
 
 
-app.listen(80, function () {
-    console.log('Port 80');
+app.listen(config.get('port'), function () {
+    log.info('Server listening on port'+config.get('port'));
 });
 // JavaScript source code
