@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var log=require('./libs/log')(module);
+
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
@@ -31,7 +33,7 @@ nlic.save(function (err) {
 
 function logdb(strlog){
 	var val= new db_log({log_date:Date(),log_val:strlog});
-	console.log(strlog);
+	log.debug(strlog);
 	val.save();
 }
 
