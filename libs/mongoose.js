@@ -31,9 +31,9 @@ var CategoryModel = mongoose.model('Category', Category);
 
 var Expense=new Schema({
    value:{type: Number, default: 0},
-   account_id: {type: ObjectId, require:true},
-   category_id: {type: ObjectId, require:false},
-   currency_id:{type:ObjectId, require:true},
+   account_id: {type: objectId, require:true},
+   category_id: {type: objectId, require:false},
+   currency_id:{type:objectId, require:true},
    date:{type: Date, default: Date.now}
 });
 
