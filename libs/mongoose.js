@@ -14,7 +14,7 @@ db.once ('open', function callback(){
     log.info("Connected to database");
 });
 
-var Schema=mongoose.Shema;
+var Schema=mongoose.Schema;
 
 var Category = new Schema({
     title: { type: String, required: true },
