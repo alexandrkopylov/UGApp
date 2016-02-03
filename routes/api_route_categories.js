@@ -47,7 +47,7 @@ router.post('/', function(req,res){
 });
 
 router.get('/:id', function(req,res){
-   log.info('Get API Category by :id');
+   log.info('Get API Category by :id (%d)', req.params.id);
 });
 
 router.put('/:id', function (req,res){
