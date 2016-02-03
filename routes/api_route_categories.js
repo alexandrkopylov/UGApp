@@ -55,7 +55,7 @@ router.get('/:id', function(req,res){
         }
     if (!err) {
         return res.send({status:'OK', category:category});
-        log.debug(category);
+        log.info('Status ok. Sending category by id');
     }else{
         res.statusCode=500;
         log.error('Internal error (%d): %s', res.statusCode, err.message);
@@ -67,10 +67,51 @@ router.get('/:id', function(req,res){
 
 router.put('/:id', function (req,res){
     log.info('Put API Category by :id');
+    return CategoryModel.findById(req.params.id, function (err,category){
+       if (!category){
+        res.statusCode = 404;
+        return res.send ({ error: 'Not found'});
+        }
+        category.title = req.body.title;
+        category.author = req.body.author;
+        category.visible = req.body.visible;
+        return category.save(function (err){
+            if (!err) {
+                log.info('Category Updated')
+                return res.send({status:'OK', category:category});
+            } else {
+            if(err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.send({ error: 'Validation error' });
+                } else {
+                    res.statusCode = 500;
+                    res.send({ error: 'Server error' });
+                }
+                log.error('Internal error(%d): %s',res.statusCode,err.message);    
+            }
+        })
+    });
 });
 
-router.delete('/api/categories/:id', function(req,res){
+router.delete('/:id', function(req,res){
     log.info('Delete API Category by :id');
+    return CategoryModel.findById(req.params.id,function (err,category){
+        if (!category) {
+            res.statusCode=404;
+            log.error('Category not found');
+            return res.send({error: 'Not found'});
+        }
+        return category.remove(function (err){
+            if (!err) {
+                log.info('Category removed');
+                return res.send ({status:'OK'});
+            }else{
+                res.statusCode=500;
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                return res.send({ error: 'Server error' });
+            }
+        })
+    })
 });
 
 module.exports = router;

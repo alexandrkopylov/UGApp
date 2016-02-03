@@ -12,17 +12,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function (req, res) {
-    log.info('Get /');
-	res.send('UGApp Server started<br>v.0.0.1');
+    log.info('GET core server/');
+	res.send('UGApp Server started<br>'+config.get('version'));
 });
-app.get('/lic', function (req, res) {
-    log.info('Get /lic');
-	res.send('UGApp Server lic port');
-});
-app.post('/lic', function (req, res) {
-   log.info('POST /lic');
-	res.send('1');
-});
+
 
 app.use('/api/categories',api_category_route);
 
