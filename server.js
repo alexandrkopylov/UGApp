@@ -102,6 +102,17 @@ app.post('/api/categories', function(req,res){
 });
 });
 
+app.get('/api/categories/:id', function(req,res){
+   logdb('Get /api/categories/:id');
+});
+
+app.put('/api/categories/:is', function (req,res){
+    logdb('Put /api/categories/:id');
+});
+
+app.delete('/api/categories/:id', function(req,res){
+    logdb('Delete /api/categories/:id');
+});
 
 
 app.listen(80, function () {
