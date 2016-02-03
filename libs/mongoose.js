@@ -29,4 +29,11 @@ Category.path('title').validate(function (v){
 
 var CategoryModel = mongoose.model('Category', Category);
 
+var Expense=new Schema({
+   value:{type:number, defaul: 0}
+});
+
+var ExpenseModel = mongoose.model('Expense', Expense);
+
 module.exports.CategoryModel = CategoryModel;
+module.exports.ExpenseModel = ExpenseModel;
