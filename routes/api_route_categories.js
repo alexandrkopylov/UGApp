@@ -48,6 +48,19 @@ router.post('/', function(req,res){
 
 router.get('/:id', function(req,res){
    log.info('Get API Category by :id (%d)', req.params.id);
+   return CategoryModel.findById(req.params.id,function(err, category){
+    if (!category) {
+        res.statusCode=404;
+        return res.send({error:'Category not found'});
+        }
+    if (!err) {
+        return res.send({status:'OK', article:article});
+    }else{
+        res.statusCode=500;
+        log.error('Internal error (%d): %s', res.statusCode, err.message);
+        return res.send({error:'Server error'});
+    }
+   });
 });
 
 router.put('/:id', function (req,res){
