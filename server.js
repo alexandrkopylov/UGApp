@@ -50,9 +50,16 @@ app.post('/lic', function (req, res) {
 	res.send('1');
 });
 app.get('/logs',function(req,res){
-	logdb('Get /logs');
-	db_log.find();
-	res.send(JSON.stringify(db_log.find()));
+	return db_log.find(function(err,logs){
+        if (!err) {
+            return res.send(logs);
+        }else{
+            res.statusCode = 500;
+            logdb('Internal error (%d): %s', res.statusCode, err.message);
+            return res.send({error:'Server error'});
+        }
+        });
+    
 });
 
 app.get('/api/categories', function (req, res) {
