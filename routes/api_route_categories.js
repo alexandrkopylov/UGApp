@@ -58,6 +58,7 @@ router.get('/:id', function(req,res){
     }else{
         res.statusCode=500;
         log.error('Internal error (%d): %s', res.statusCode, err.message);
+        log.debug(category);
         return res.send({error:'Server error'});
     }
    });
