@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var log=require('./libs/log')(module);
-var config=require('./libs/config')(module);
+var config=require('./libs/config');
 
 var CategoryModel = require('./libs/mongoose').CategoryModel;
 
