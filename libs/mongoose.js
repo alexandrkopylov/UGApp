@@ -30,9 +30,11 @@ Category.path('title').validate(function (v){
 var CategoryModel = mongoose.model('Category', Category);
 
 var Expense=new Schema({
-   value:{type: long, default: 0},
-   category_id: {type: objectId, require:false},
-   currency:{type:string, require:true}
+   value:{type: Number, default: 0},
+   account_id: {type: ObjectId, require:true},
+   category_id: {type: ObjectId, require:false},
+   currency_id:{type:ObjectId, require:true},
+   date:{type: Date, default: Date.now}
 });
 
 var ExpenseModel = mongoose.model('Expense', Expense);
