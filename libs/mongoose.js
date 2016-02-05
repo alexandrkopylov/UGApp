@@ -43,12 +43,12 @@ var ExpenseModel = mongoose.model('Expense', Expense);
 
 var CurrencyExch=new Schema({
    date:{type:Date, default:Date.now},
-   cource:{type:Number, require:true}
+   exch:{type:Number, require:true}
 });
 var Currency=new Schema({
    name:{type:String},
    short_name:{type:String, require:true},
-   cource_to_RUB: CurrencyExch,
+   exch_to_RUB: [CurrencyExch],
    modified:{type:Date, default:Date.now}
    });
 
