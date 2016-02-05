@@ -2,7 +2,7 @@
 var express=require('express');
 var router = express.Router();
 var log=require('../libs/log')(module);
-var update_currency_exch=require('../libs/update_currency_exch')(module);
+var update_currency_exch=require('../libs/update_currency_exch');
 
 
 var CurrencyModel = require('../libs/mongoose').CurrencyModel;
