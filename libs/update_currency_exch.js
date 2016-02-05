@@ -38,7 +38,7 @@ var update_currency_exch = function () {
     req.write(cbr_post_data);
     req.end();
     log.info(xmlstr);
-    log.info(n);
+    //log.info(n);
     //log.info('consist %d items', n);
     return 0;
 };
