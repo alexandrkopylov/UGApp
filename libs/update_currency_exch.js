@@ -27,7 +27,7 @@ var update_currency_exch = function () {
         log.info('STATUS:' +res.statusCode);
         log.info('HEADERS:' + JSON.stringify(res.headers));
         res.on('data', function (chunk){
-            res.setEncoding('utf8');
+            res.setEncoding('windows-1251');
             log.info('BODY:' +chunk);
         });
     });
