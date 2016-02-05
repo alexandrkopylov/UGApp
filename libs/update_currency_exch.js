@@ -40,7 +40,9 @@ var update_currency_exch = function () {
             parser.parseString(xmlstr, function(err,res){
                 exchdata=res;
                 log.info(exchdata);
-            })
+            });
+            var ind = exchdata.indexOf("USD");
+            log.info('Index of USD is %d', ind);
         });
     });
     req.on('error', function(err){
