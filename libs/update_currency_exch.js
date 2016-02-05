@@ -21,14 +21,15 @@ var update_currency_exch = function () {
     log.info('Starting Update Currency Exch');
     var currincies=CurrencyModel.find({});
     var n=currincies.count({});
-    
+    var xmlstr='';
     //Request CBR.ru
     var req=http.request(paramcbr, function(res){
         log.info('STATUS:' +res.statusCode);
         log.info('HEADERS:' + JSON.stringify(res.headers));
         res.on('data', function (chunk){
-            //res.setEncoding('windows-1251');
-            log.info('BODY:' +chunk);
+            res.setEncoding('win-1251');
+            log.info('BODY:' + chunk);
+            smlstr=chank;
         });
     });
     req.on('error', function(e){
