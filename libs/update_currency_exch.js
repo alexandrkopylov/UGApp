@@ -39,7 +39,7 @@ var update_currency_exch = function () {
            // log.info('BODY:'+xmlstr);
             parser.parseString(xmlstr, {explicitRoot:false}, function(err,res){
                 exchdata=res;
-                log.info(exchdata);
+                log.info(res);
             });
             
             var ind=0;
