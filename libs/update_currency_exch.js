@@ -8,7 +8,7 @@ var update_currency_exch = function () {
     var currincies=CurrencyModel.find({});
     var n=currincies.count({});
     log.info('Currencies consist %d items', n);
-    return currincies;
+    return 0;
 };
 
 module.exports = update_currency_exch;
