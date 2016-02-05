@@ -41,6 +41,8 @@ var update_currency_exch = function () {
                 exchdata=res['Value'];
                 log.info(exchdata);
             });
+            
+            var ind=0;
             //var ind = exchdata.indexOf("USD");
             log.info('Index of USD is %d', ind);
         });
