@@ -62,6 +62,7 @@ router.get('/update/:id', function(req,res){
         var exch=currency.cource_to_RUB.create({
             cource: 0
         });
+        exch.save();
         return currency.save(function (err){
             if (!err) {
                 log.info('Currency Exch Updated')
