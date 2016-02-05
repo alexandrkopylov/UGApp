@@ -48,7 +48,7 @@ var CurrencyExch=new Schema({
 var Currency=new Schema({
    name:{type:String},
    short_name:{type:String, require:true},
-   cource_to_RUB:[CurrencyExch],
+   cource_to_RUB: CurrencyExch,
    modified:{type:Date, default:Date.now}
    });
 
