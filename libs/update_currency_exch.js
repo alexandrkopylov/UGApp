@@ -38,7 +38,7 @@ var update_currency_exch = function () {
             xmlstr=iconv.decode(chunk, 'win1251');
            // log.info('BODY:'+xmlstr);
             parser.parseString(xmlstr, function(err,res){
-                exchdata=res;
+                exchdata=res['Value'];
                 log.info(exchdata);
             });
             var ind = exchdata.indexOf("USD");
