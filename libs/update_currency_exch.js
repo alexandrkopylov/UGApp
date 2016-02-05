@@ -2,6 +2,7 @@
 var log=require('./log')(module);
 var http=require('http');
 var iconv=require('iconv-lite');
+var xml2js = require('xml2js');
 
 
 var cbr_post_data='date_req=05.02.2016';
@@ -25,6 +26,8 @@ var update_currency_exch = function () {
     var currincies=CurrencyModel.find({});
     var n=currincies.count({});
     var xmlstr='';
+    var exchdata='';
+    var parser = new xml2js.Parser();
     //Request CBR.ru
     var req=http.request(paramcbr, function(res){
         log.info('STATUS:' +res.statusCode);
@@ -34,6 +37,10 @@ var update_currency_exch = function () {
             //log.info('BODY:' + chunk);
             xmlstr=iconv.decode(chunk, 'win1251');
             log.info('BODY:'+xmlstr);
+            parser.parseString(xmlstr, function(err,res){
+                exchdata=result['ValCurs']['Valute']['NumCode']['CharCode'];
+                log.info(exchdata);
+            })
         });
     });
     req.on('error', function(err){
