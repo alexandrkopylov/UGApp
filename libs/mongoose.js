@@ -41,15 +41,21 @@ var Expense=new Schema({
 
 var ExpenseModel = mongoose.model('Expense', Expense);
 
+var CurrencyExch=new Schema({
+   date:{type:Date, default:Date.now},
+   cource:{type:Number, require:true}
+});
 var Currency=new Schema({
    name:{type:String},
    short_name:{type:String, require:true},
-   cource_to_RUB:[{date: {type: Date, default:Date.now}, cource:{type:Number,require:true}}],
+   cource_to_RUB:[CurrencyExch],
    modified:{type:Date, default:Date.now}
    });
 
+var CurrencyExchModel=mongoose.model('CurrencyExch', CurrencyExch);
 var CurrencyModel = mongoose.model('Currency', Currency);
 
 module.exports.CategoryModel = CategoryModel;
 module.exports.ExpenseModel = ExpenseModel;
 module.exports.CurrencyModel = CurrencyModel;
+module.exports.CurrencyExchModel=CurrencyExchModel;

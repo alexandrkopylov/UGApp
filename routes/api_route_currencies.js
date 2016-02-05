@@ -4,6 +4,7 @@ var router = express.Router();
 var log=require('../libs/log')(module);
 
 var CurrencyModel = require('../libs/mongoose').CurrencyModel;
+var CurrencyExchModel = require ('../libs/mongoose').CurrencyExchModel;
 /*var Currency=new Schema({
    name:{type:String},
    short_name:{type:String, require:true},
@@ -51,8 +52,35 @@ router.post('/', function(req,res){
         }
 });
 });
-/*
-router.get('/:id', function(req,res){
+router.post('/:id', function(req,res){
+    log.info ('Update Currency Exchange');
+    Currency.findById(req.params.id, function (err,currency){
+       if (!currency){
+        res.statusCode = 404;
+        return res.send ({ error: 'Not found'});
+        }
+        var exch=new currency.cource_tu_RUB({
+            cource: 0
+        });
+        return currency.save(function (err){
+            if (!err) {
+                log.info('Currency Exch Updated')
+                return res.send({status:'OK', category:category});
+            } else {
+            if(err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.send({ error: 'Validation error' });
+                } else {
+                    res.statusCode = 500;
+                    res.send({ error: 'Server error' });
+                }
+                log.error('Internal error(%d): %s',res.statusCode,err.message);    
+            }
+        })
+    });
+    });
+
+/*router.get('/:id', function(req,res){
    log.info('Get API Category by :id (%d)', req.params.id);
    return CategoryModel.findById(req.params.id,function(err, category){
     if (!category) {
