@@ -6,7 +6,7 @@ var CurrencyExchModel = require ('../libs/mongoose').CurrencyExchModel;
 var update_currency_exch = function () {
     log.info('Starting Update Currency Exch');
     var currincies=CurrencyModel.find({});
-    log.info(currincies);
+    log.info(currincies.count({}));
     log.debug('Test Debug');
     return currincies;
     /*
