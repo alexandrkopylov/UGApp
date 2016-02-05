@@ -30,6 +30,7 @@ var update_currency_exch = function () {
             res.setEncoding('utf8');
             //log.info('BODY:' + chunk);
             xmlstr=chunk;
+            log.info('BODY:'+xmlstr);
         });
     });
     req.on('error', function(err){
@@ -37,7 +38,7 @@ var update_currency_exch = function () {
     });
     req.write(cbr_post_data);
     req.end();
-    log.info('BODY:'+xmlstr);
+    
     //log.info(n);
     //log.info('consist %d items', n);
     return 0;
