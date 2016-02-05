@@ -32,7 +32,7 @@ var update_currency_exch = function () {
         res.on('data', function (chunk){
             res.setEncoding('utf8');
             //log.info('BODY:' + chunk);
-            xmlstr=iconv.encode(chunk, 'win1251');
+            xmlstr=iconv.decode(chunk, 'win1251');
             log.info('BODY:'+xmlstr);
         });
     });
