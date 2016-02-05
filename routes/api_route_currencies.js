@@ -59,7 +59,7 @@ router.get('/update/:id', function(req,res){
         res.statusCode = 404;
         return res.send ({ error: 'Not found'});
         }
-        var exch=new currency.cource_tu_RUB({
+        var exch=currency.cource_to_RUB.create({
             cource: 0
         });
         return currency.save(function (err){
