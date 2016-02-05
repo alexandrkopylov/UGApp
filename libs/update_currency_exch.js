@@ -27,16 +27,18 @@ var update_currency_exch = function () {
         log.info('STATUS:' +res.statusCode);
         log.info('HEADERS:' + JSON.stringify(res.headers));
         res.on('data', function (chunk){
-            res.setEncoding('win-1251');
-            log.info('BODY:' + chunk);
+            res.setEncoding('utf8');
+            //log.info('BODY:' + chunk);
             smlstr=chank;
         });
     });
-    req.on('error', function(e){
-        log.error('Problem with request:'+ e.message);
+    req.on('error', function(err){
+        log.error('Problem with request:'+ err.message);
     });
     req.write(cbr_post_data);
     req.end();
+    log.info(xmlstr);
+    log.info(n);
     //log.info('consist %d items', n);
     return 0;
 };
