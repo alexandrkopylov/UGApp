@@ -56,7 +56,32 @@ router.post('/', function(req,res){
 });
 
 router.get ('/update',function(req,res){
-    return res.send(update_currency_exch());
+    update_currency_exch();
+     return CurrencyModel.findById(req.params.id, function (err,currency){
+       if (!currency){
+        res.statusCode = 404;
+        return res.send ({ error: 'Not found'});
+        }
+        currency.exch_to_RUB.push({
+            exch: 0
+        });
+                
+        return currency.save(function (err){
+            if (!err) {
+                log.info('Currency Exch Updated');
+                return res.send({status:'OK', currency:currency.exch_to_RUB});
+            } else {
+            if(err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.send({ error: 'Validation error' });
+                } else {
+                    res.statusCode = 500;
+                    res.send({ error: 'Server error' });
+                }
+                log.error('Internal error(%d): %s',res.statusCode,err.message);    
+            }
+        })
+    });
     });
 
 router.get('/update/:id', function(req,res){
