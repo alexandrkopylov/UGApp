@@ -66,7 +66,7 @@ router.get('/update/:id', function(req,res){
         return currency.save(function (err){
             if (!err) {
                 log.info('Currency Exch Updated');
-                return res.send({status:'OK', currency:exch});
+                return res.send({status:'OK', currency:currency.cource_to_RUB});
             } else {
             if(err.name == 'ValidationError') {
                     res.statusCode = 400;
