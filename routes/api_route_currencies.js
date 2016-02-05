@@ -56,7 +56,7 @@ router.post('/', function(req,res){
 });
 
 router.get ('/update',function(req,res){
-    update_currency_exch();
+    return update_currency_exch();
     });
 
 router.get('/update/:id', function(req,res){
