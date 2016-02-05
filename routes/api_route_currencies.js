@@ -57,7 +57,7 @@ router.post('/', function(req,res){
 
 router.get ('/update',function(req,res){
     update_currency_exch();
-     return CurrencyModel.findById(req.params.id, function (err,currency){
+     return CurrencyModel.find(function (err,currency){
        if (!currency){
         res.statusCode = 404;
         return res.send ({ error: 'Not found'});
