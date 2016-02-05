@@ -2,6 +2,8 @@
 var express=require('express');
 var router = express.Router();
 var log=require('../libs/log')(module);
+var update_currency_exch=require('../libs/update_currency_exch')(module);
+
 
 var CurrencyModel = require('../libs/mongoose').CurrencyModel;
 var CurrencyExchModel = require ('../libs/mongoose').CurrencyExchModel;
@@ -52,6 +54,11 @@ router.post('/', function(req,res){
         }
 });
 });
+
+router.get ('/update',function(req,res){
+    update_currency_exch();
+    });
+
 router.get('/update/:id', function(req,res){
     log.info ('Update Currency Exchange');
     return CurrencyModel.findById(req.params.id, function (err,currency){
