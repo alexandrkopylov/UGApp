@@ -29,7 +29,7 @@ var update_currency_exch = function () {
         res.on('data', function (chunk){
             res.setEncoding('utf8');
             //log.info('BODY:' + chunk);
-            smlstr=chank;
+            xmlstr=chunk;
         });
     });
     req.on('error', function(err){
