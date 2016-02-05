@@ -37,7 +37,7 @@ var update_currency_exch = function () {
             //log.info('BODY:' + chunk);
             xmlstr=iconv.decode(chunk, 'win1251');
            // log.info('BODY:'+xmlstr);
-            parser.parseString(xmlstr, function(err,res){
+            parser.parseString(xmlstr, {trim:true}, function(err,res){
                 exchdata=res['Value'];
                 log.info(exchdata);
             });
