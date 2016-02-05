@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 var log=require('./log')(module);
 var http=require('http');
+var iconv=require('iconv-lite');
+
+
 var cbr_post_data='date_req=05.02.2016';
 var paramcbr = {
     hostname:'www.cbr.ru',
@@ -29,7 +32,7 @@ var update_currency_exch = function () {
         res.on('data', function (chunk){
             res.setEncoding('utf8');
             //log.info('BODY:' + chunk);
-            xmlstr=chunk;
+            xmlstr=iconv.encode(chunk, 'win1251');
             log.info('BODY:'+xmlstr);
         });
     });
