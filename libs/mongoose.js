@@ -2,6 +2,7 @@
 var mongoose=require('mongoose');
 var log=require('./log')(module);
 var config=require('./config');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 mongoose.connect(config.get('mongoose:uri'));
 var db = mongoose.connection;
@@ -29,4 +30,15 @@ Category.path('title').validate(function (v){
 
 var CategoryModel = mongoose.model('Category', Category);
 
+var Expense=new Schema({
+   value:{type: Number, default: 0},
+   account_id: {type: ObjectId, require:true},
+   category_id: {type: ObjectId, require:false},
+   currency_id:{type:ObjectId, require:true},
+   date:{type: Date, default: Date.now}
+});
+
+var ExpenseModel = mongoose.model('Expense', Expense);
+
 module.exports.CategoryModel = CategoryModel;
+module.exports.ExpenseModel = ExpenseModel;

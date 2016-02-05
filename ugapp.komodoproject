@@ -13,10 +13,19 @@
 </file>
 <folder id="885f6e77-561c-4d07-a605-79585dbeefdd" idref="92b3a757-266c-4259-8e99-20c7b20ae5fe" name="libs">
 </folder>
+<<<<<<< HEAD
 <folder id="a6be364e-d14b-49b3-ae6d-de97c17d668c" idref="92b3a757-266c-4259-8e99-20c7b20ae5fe" name="routes">
 </folder>
 <file id="37fa91a0-145c-428c-82ac-b4cd7ea560e3" idref="a6be364e-d14b-49b3-ae6d-de97c17d668c" name="api_route_categories.js" url="routes/api_route_categories.js">
+=======
+<folder id="d2b34f06-4fe6-414f-9d94-3f7b637b9a95" idref="92b3a757-266c-4259-8e99-20c7b20ae5fe" name="routes">
+</folder>
+<file id="4829dcdc-d0c0-4806-ad23-590fdb79deca" idref="d2b34f06-4fe6-414f-9d94-3f7b637b9a95" name="api_route_categories.js" url="routes/api_route_categories.js">
+</file>
+<file id="d1e6688d-ac8c-4226-9890-208b23443ff0" idref="d2b34f06-4fe6-414f-9d94-3f7b637b9a95" name="api_route_expenses.js" url="routes/api_route_expenses.js">
+>>>>>>> origin/master
 </file>
 <preference-set idref="92b3a757-266c-4259-8e99-20c7b20ae5fe" id="project" preftype="project">
+  <long id="prefs_version">1</long>
 </preference-set>
 </project>
