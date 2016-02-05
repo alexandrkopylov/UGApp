@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var api_route_categories=require('./routes/api_route_categories');
 var api_route_expenses=require('./routes/api_route_expenses');
+var api_route_currencies=require('./routes/api_route_currencies')
 var log=require('./libs/log')(module);
 var config=require('./libs/config');
 
@@ -20,6 +21,7 @@ app.get('/', function (req, res) {
 
 app.use('/api/categories',api_route_categories);
 app.use('/api/expenses',api_route_expenses);
+app.use('/api/currencies', api_route_currencies);
 
 
 app.listen(config.get('port'), function () {
