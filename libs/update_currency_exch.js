@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 var log=require('./log')(module);
+var http=require('http');
+
 var CurrencyModel = require('../libs/mongoose').CurrencyModel;
 var CurrencyExchModel = require ('../libs/mongoose').CurrencyExchModel;
 
