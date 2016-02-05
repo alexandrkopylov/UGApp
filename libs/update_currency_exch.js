@@ -1,6 +1,18 @@
 #!/usr/bin/env node
 var log=require('./log')(module);
 var http=require('http');
+var cbr_post_data='date_req=05.02.2016';
+var paramcbr = {
+    hostname:'www.cbr.ru',
+    path: '/scripts/XML_daily.asp',
+    port:80,
+    method: 'POST',
+    headers:{
+        'Content-Type':'application/x-www-form-urlencoded',
+        'Content-Length':post_data_cbr.length
+    }
+};
+
 
 var CurrencyModel = require('../libs/mongoose').CurrencyModel;
 var CurrencyExchModel = require ('../libs/mongoose').CurrencyExchModel;
@@ -9,6 +21,21 @@ var update_currency_exch = function () {
     log.info('Starting Update Currency Exch');
     var currincies=CurrencyModel.find({});
     var n=currincies.count({});
+    
+    //Request CBR.ru
+    var req=http.request(paramcbr, function(res){
+        log.info('STATUS:' +res.statusCode);
+        log.info('HEADERS:' + JSON.stringify(res.headers));
+        res.on('data', function (chunk){
+            res.setEncoding('utf8');
+            log.info('BODY:' +chunk);
+        });
+    });
+    req.on('error', function(e){
+        log.error('Problem with request:'+ e.message);
+    });
+    req.write(cbr_post_data);
+    req.end();
     //log.info('consist %d items', n);
     return 0;
 };
