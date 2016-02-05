@@ -52,9 +52,9 @@ router.post('/', function(req,res){
         }
 });
 });
-router.post('/:id', function(req,res){
+router.get('/update/:id', function(req,res){
     log.info ('Update Currency Exchange');
-    CurrencyModel.findById(req.params.id, function (err,currency){
+    return CurrencyModel.findById(req.params.id, function (err,currency){
        if (!currency){
         res.statusCode = 404;
         return res.send ({ error: 'Not found'});
