@@ -9,7 +9,7 @@ var paramcbr = {
     method: 'POST',
     headers:{
         'Content-Type':'application/x-www-form-urlencoded',
-        'Content-Length':post_data_cbr.length
+        'Content-Length':cbr_post_data.length
     }
 };
 
